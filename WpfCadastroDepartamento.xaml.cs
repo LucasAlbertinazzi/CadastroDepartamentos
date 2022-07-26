@@ -1,27 +1,15 @@
-﻿using Sist_Controle.Business.Utils;
-using Sist_Controle.Utils;
-using Sist_Controle_Dal;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using static Sist_Controle.Business.Utils.AutoCompleteBoxUserControl;
+using static System.Sistema.AutoCompleteBoxUserControl;
 
-namespace Sist_Controle
+namespace Sistema
 {
-    /// <summary>
-    /// Interaction logic for WpfCadastroDepartamento.xaml
-    /// </summary>
+   
     public partial class WpfCadastroDepartamento : Window
     {
-        #region Permissões
-        private bool UsuarioTemPermissao()
-        {
-            return (App.Current as Sist_Controle.App).permissao == "G";
-        }
-        #endregion
-
         #region 1- Variaveis
 
         DAL obj = new DAL();
