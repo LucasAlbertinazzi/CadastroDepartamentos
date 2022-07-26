@@ -1,18 +1,18 @@
-﻿using Sist_Controle.Utils;
+﻿using Sistema.Utils;
 using System.Windows;
 
-namespace Sist_Controle
+namespace Sistema
 {
-    /// <summary>
-    /// Interaction logic for WpfDialogResult.xaml
-    /// </summary>
     public partial class WpfDialogResult : Window
     {
+        #region 1- Variáveis
         private string _texto = string.Empty;
         private string _opUm = string.Empty;
         private string _opDois = string.Empty;
         private int _index;
+        #endregion
 
+        #region 2- Métodos Construtores
         public WpfDialogResult()
         {
             InitializeComponent();
@@ -32,6 +32,9 @@ namespace Sist_Controle
             _opDois = opcaoDois;
             _index = index;
         }
+        #endregion
+
+        #region 3- Eventos de Controle
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -47,7 +50,7 @@ namespace Sist_Controle
                 txbPergunta.Text = _texto;
             }
 
-            if(_index == 3)
+            if (_index == 3)
             {
                 gridOpcao.Visibility = Visibility.Visible;
                 txbPergunta.Text = _texto;
@@ -92,5 +95,7 @@ namespace Sist_Controle
             gridOpcao.Visibility = Visibility.Collapsed;
             Close();
         }
+
+        #endregion
     }
 }
