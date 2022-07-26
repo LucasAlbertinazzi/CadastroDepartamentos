@@ -11,9 +11,9 @@ using static Sist_Controle.Business.Utils.AutoCompleteBoxUserControl;
 namespace Sist_Controle
 {
     /// <summary>
-    /// Interaction logic for CadastroDepartamento.xaml
+    /// Interaction logic for WpfCadastroDepartamento.xaml
     /// </summary>
-    public partial class CadastroDepartamento : Window
+    public partial class WpfCadastroDepartamento : Window
     {
         #region Permissões
         private bool UsuarioTemPermissao()
@@ -47,7 +47,7 @@ namespace Sist_Controle
 
         #region 3- Métodos Construtores
 
-        public CadastroDepartamento()
+        public WpfCadastroDepartamento()
         {
             InitializeComponent();
         }
@@ -199,35 +199,46 @@ namespace Sist_Controle
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
-        }
-
         private void listboxUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AutoCompleteBoxUserControl.SelectIndex(txbUsuario, popupUsuario, listboxUsuario);
+            AutoCompleteBoxUserControl.SelectIndex(txbUsuario, popupUsuario, listboxUsuario, 1);
         }
 
         private void txbUsuario_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            AutoCompleteBoxUserControl.SelectContains(txbUsuario, popupUsuario, listboxUsuario, listUser);
+            if (txbUsuario.Text.Length > 0)
+            {
+                lblMarcaUser.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                lblMarcaUser.Visibility = Visibility.Visible;
+            }
+
+            AutoCompleteBoxUserControl.SelectContains(txbUsuario, popupUsuario, listboxUsuario, listUser, 1);
+
         }
 
         private void listboxDep_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AutoCompleteBoxUserControl.SelectIndex(txbDep, popupDep, listboxDep);
+            AutoCompleteBoxUserControl.SelectIndex(txbDep, popupDep, listboxDep, 0);
         }
 
         private void txbDep_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            AutoCompleteBoxUserControl.SelectContains(txbDep, popupDep, listboxDep, listDep);
+            if(txbDep.Text.Length > 0)
+            {
+                lblMarcaDep.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                lblMarcaDep.Visibility = Visibility.Visible;
+            }
+
+            AutoCompleteBoxUserControl.SelectContains(txbDep, popupDep, listboxDep, listDep, 0);
+
         }
 
         #endregion
-
     }
 }
